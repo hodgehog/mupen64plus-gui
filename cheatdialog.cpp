@@ -16,6 +16,7 @@ CheatDialog::CheatDialog()
     QGridLayout *cheatLayout = new QGridLayout;
     QString cheatName;
     QString desc;
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     int p = 0;
     if (l_RomFound && l_CheatCodesFound != 0) {
         sCheatInfo *pCur = l_CheatList;

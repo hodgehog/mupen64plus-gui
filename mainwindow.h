@@ -87,6 +87,7 @@ private:
     int verbose;
     int nogui;
     int gles;
+    int state_slot;
     QString m_title;
 };
 

@@ -326,7 +326,7 @@ ControllerDialog::ControllerDialog()
         PluginSearchLoad();
         PluginUnload();
     }
-
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     initSDL();
     int numJoysticks = SDL_NumJoysticks();
     joyNames.clear();

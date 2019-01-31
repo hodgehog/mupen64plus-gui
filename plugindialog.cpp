@@ -153,6 +153,7 @@ PluginDialog::PluginDialog()
     QVBoxLayout *mainLayout = new QVBoxLayout;
     QTabWidget *tabWidget = new QTabWidget;
     tabWidget->setUsesScrollButtons(false);
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
     QWidget *coreSettings = new QWidget;
     coreLayout = new QGridLayout;

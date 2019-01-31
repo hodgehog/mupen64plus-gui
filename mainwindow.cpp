@@ -276,6 +276,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->menuFile->insertSeparator(ui->actionSave_State);
     ui->menuFile->insertMenu(ui->actionSave_State_To, SaveSlot);
     ui->menuFile->insertSeparator(ui->actionSave_State_To);
+    state_slot = 0;
     for (int i = 0; i < 10; ++i) {
         my_slots[i] = new QAction(this);
         my_slots[i]->setCheckable(true);
@@ -285,9 +286,9 @@ MainWindow::MainWindow(QWidget *parent) :
         QAction *temp_slot = my_slots[i];
         connect(temp_slot, &QAction::triggered,[=](bool checked){
             if (checked) {
-                int slot = temp_slot->text().remove("Slot ").toInt();
+                state_slot = temp_slot->text().remove("Slot ").toInt();
                 if (QtAttachCoreLib())
-                    (*CoreDoCommand)(M64CMD_STATE_SET_SLOT, slot, NULL);
+                    (*CoreDoCommand)(M64CMD_STATE_SET_SLOT, state_slot, NULL);
             }
         });
     }
@@ -475,7 +476,7 @@ void MainWindow::createOGLWindow(QSurfaceFormat* format)
     QWidget *container = QWidget::createWindowContainer(my_window);
     container->setFocusPolicy(Qt::StrongFocus);
 
-    my_window->setCursor(Qt::BlankCursor);
+    //my_window->setCursor(Qt::BlankCursor);
     my_window->setFormat(*format);
 
     setCentralWidget(container);
@@ -598,12 +599,14 @@ void MainWindow::on_actionSave_State_triggered()
 {
     if (QtAttachCoreLib())
         (*CoreDoCommand)(M64CMD_STATE_SAVE, 1, NULL);
+    this->statusBar()->showMessage(QString("Saved savestate to slot %1").arg(state_slot));
 }
 
 void MainWindow::on_actionLoad_State_triggered()
 {
     if (QtAttachCoreLib())
         (*CoreDoCommand)(M64CMD_STATE_LOAD, 1, NULL);
+    this->statusBar()->showMessage(QString("Loaded savestate from slot %1").arg(state_slot));
 }
 
 void MainWindow::on_actionToggle_Fullscreen_triggered()

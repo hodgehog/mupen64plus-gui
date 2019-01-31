@@ -89,6 +89,7 @@ void SettingsDialog::initStuff()
     if (layout != nullptr)
         delete layout;
     layout = new QGridLayout;
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
     QLabel *coreLabel = new QLabel("Core Library Path");
     corePath = new QLineEdit;
