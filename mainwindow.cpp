@@ -253,9 +253,9 @@ MainWindow::MainWindow(QWidget *parent) :
     gles = 0;
     ui->setupUi(this);
 
-    m_title = "mupen64plus-gui    Build Date: ";
-    m_title += __DATE__;
-    resetTitle();
+    //m_title = "mupen64plus-gui    Build Date: ";
+    //m_title += __DATE__;
+    //resetTitle();
 
     QString ini_path = QDir(QCoreApplication::applicationDirPath()).filePath("mupen64plus-gui.ini");
     settings = new QSettings(ini_path, QSettings::IniFormat);
@@ -487,6 +487,9 @@ void MainWindow::deleteOGLWindow()
     my_window->doneCurrent();
     my_window->destroy();
     my_window = nullptr;
+    QWidget *background = new QWidget();
+    background->setStyleSheet("background-color: black");
+    setCentralWidget(background);
 }
 
 void MainWindow::openROM(QString filename)
