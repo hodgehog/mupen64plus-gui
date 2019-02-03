@@ -17,6 +17,7 @@ CheatDialog::CheatDialog()
     QString cheatName;
     QString desc;
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    setWindowTitle("Cheats");
     int p = 0;
     if (l_RomFound && l_CheatCodesFound != 0) {
         sCheatInfo *pCur = l_CheatList;

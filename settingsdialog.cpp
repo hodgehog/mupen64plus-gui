@@ -90,6 +90,7 @@ void SettingsDialog::initStuff()
         delete layout;
     layout = new QGridLayout;
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    setWindowTitle("Plugin and Path Selection");
 
     QLabel *coreLabel = new QLabel("Core Library Path");
     corePath = new QLineEdit;

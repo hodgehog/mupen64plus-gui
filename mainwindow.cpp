@@ -459,7 +459,7 @@ void MainWindow::updateOpenRecent()
 void MainWindow::setTitle(std::string title)
 {
     QString _title = QString::fromStdString(title);
-    _title.prepend("mupen64plus: ");
+    _title.prepend("m64p: ");
     this->setWindowTitle(_title);
 }
 

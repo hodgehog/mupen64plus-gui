@@ -154,6 +154,7 @@ PluginDialog::PluginDialog()
     QTabWidget *tabWidget = new QTabWidget;
     tabWidget->setUsesScrollButtons(false);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    setWindowTitle("Core and Plugin Settings");
 
     QWidget *coreSettings = new QWidget;
     coreLayout = new QGridLayout;
