@@ -13,6 +13,7 @@ LogViewer::LogViewer()
     area = new QScrollArea;
     mainLayout->addWidget(area);
     setLayout(mainLayout);
+    setWindowTitle("Log");
 }
 
 LogViewer::~LogViewer()
