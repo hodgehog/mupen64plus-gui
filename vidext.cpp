@@ -206,8 +206,12 @@ m64p_error qtVidExtFuncToggleFS(void)
     return M64ERR_SUCCESS;
 }
 
-m64p_error qtVidExtFuncResizeWindow(int, int)
+m64p_error qtVidExtFuncResizeWindow(int width, int height)
 {
+    int response = M64VIDEO_NONE;
+    (*CoreDoCommand)(M64CMD_CORE_STATE_QUERY, M64CORE_VIDEO_MODE, &response);
+    if (response == M64VIDEO_WINDOWED)
+        workerThread->resizeMainWindow(width, height);
     return M64ERR_SUCCESS;
 }
 
